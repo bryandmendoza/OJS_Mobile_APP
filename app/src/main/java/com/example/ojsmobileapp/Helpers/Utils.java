@@ -1,6 +1,7 @@
 package com.example.ojsmobileapp.Helpers;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -42,6 +43,8 @@ public class Utils {
                         JournalInfo journal = gson.fromJson(journalsData.getString(i), JournalInfo.class);
                         list.add(journal);
                     }
+                    Log.d("INFO", "");
+                    setList(list);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -54,5 +57,9 @@ public class Utils {
         });
         request.add(stringRq);
         return list;
+    }
+
+    public static void setList(List<JournalInfo> list) {
+        Utils.list = list;
     }
 }

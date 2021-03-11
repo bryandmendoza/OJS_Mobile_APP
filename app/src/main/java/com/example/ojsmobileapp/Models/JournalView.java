@@ -13,16 +13,16 @@ import com.mindorks.placeholderview.annotations.View;
 @Layout(R.layout.journals_item)
 public class JournalView {
     @View(R.id.jiTxtTitle)
-    private TextView jiTxtTitle;
+    public TextView jiTxtTitle;
 
     @View(R.id.jiTxtDescription)
-    private TextView jiTxtDescription;
+    public TextView jiTxtDescription;
 
     @View(R.id.jiImageView)
-    private ImageView jiImageView;
+    public ImageView jiImageView;
 
-    private JournalInfo info;
-    private Context context;
+    public JournalInfo info;
+    public Context context;
 
     public JournalView(Context context, JournalInfo info) {
         this.info = info;
@@ -30,7 +30,7 @@ public class JournalView {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         jiTxtTitle.setText(info.getName());
         jiTxtDescription.setText(info.getDescription());
         Glide.with(context).load(info.getPortada()).into(jiImageView);
