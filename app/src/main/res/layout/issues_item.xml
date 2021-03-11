@@ -27,7 +27,7 @@
             app:cardElevation="1dp">
 
             <ImageView
-                android:id="@+id/jiImageView"
+                android:id="@+id/iiImageView"
                 android:layout_width="60dp"
                 android:layout_height="80dp"
                 android:layout_gravity="top"
@@ -42,14 +42,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/jiTxtTitle"
+                android:id="@+id/iiTxtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/jiTxtDescription"
+                android:id="@+id/iiTxtDatePublished"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -57,14 +57,14 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/jiBtnViewMore"
+                android:id="@+id/iiBtnViewMore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="right"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
-                android:text="Ver revista"
+                android:text="Ver volumen"
                 android:textStyle="bold"/>
 
         </LinearLayout>

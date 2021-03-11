@@ -6,6 +6,7 @@ import androidx.appcompat.view.menu.MenuView;
 import android.os.Bundle;
 
 import com.example.ojsmobileapp.Helpers.Utils;
+import com.example.ojsmobileapp.Helpers.VolleyCallback;
 import com.example.ojsmobileapp.Models.JournalInfo;
 import com.example.ojsmobileapp.Models.JournalView;
 import com.mindorks.placeholderview.InfinitePlaceHolderView;
@@ -25,10 +26,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupJournals() {
-        List<JournalInfo> list = Utils.getJournalsData(this.getApplicationContext());
-        for (int i = 0; i < list.size(); i++) {
-            journalsList.addView(new JournalView(this.getApplicationContext(), list.get(i)));
-        }
-        //journalsList.setLoadMoreResolver(new LoadMore(journalsList, list));
+        Utils.getJournalsData(this.getApplicationContext(), new VolleyCallback() {
+            @Override
+            public void onSuccess(List<JournalInfo> result) {
+                List<JournalInfo> list = result;
+                for (int i = 0; i < list.size(); i++) {
+                    journalsList.addView(new JournalView(MainActivity.this.getApplicationContext(), list.get(i)));
+                }
+            }
+        });
     }
 }

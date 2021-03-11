@@ -1,10 +1,14 @@
 package com.example.ojsmobileapp.Models;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ojsmobileapp.IssuesActivity;
 import com.example.ojsmobileapp.R;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -21,6 +25,9 @@ public class JournalView {
     @View(R.id.jiImageView)
     public ImageView jiImageView;
 
+    @View(R.id.jiBtnViewMore)
+    public Button jiBtnViewMore;
+
     public JournalInfo info;
     public Context context;
 
@@ -34,5 +41,15 @@ public class JournalView {
         jiTxtTitle.setText(info.getName());
         jiTxtDescription.setText(info.getDescription());
         Glide.with(context).load(info.getPortada()).into(jiImageView);
+        jiBtnViewMore.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                Intent intent = new Intent(context, IssuesActivity.class);
+                Bundle b = new Bundle();
+                b.putString("", "");
+                intent.putExtras(b);
+                context.startActivity(intent);
+            }
+        });
     }
 }

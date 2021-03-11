@@ -24,16 +24,15 @@ import java.util.List;
 public class Utils {
     private static RequestQueue request;
     private static StringRequest stringRq;
-    private static List<JournalInfo> list;
 
-    public static List<JournalInfo> getJournalsData(Context context) {
-        list = null;
+    public static void getJournalsData(Context context, final VolleyCallback callback) {
         request = Volley.newRequestQueue(context);
         String URL = "https://revistas.uteq.edu.ec/ws/journals.php";
         stringRq = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONArray journalsData = null;
+                List<JournalInfo> list;
                 try {
                     GsonBuilder builder = new GsonBuilder();
                     Gson gson = builder.create();
@@ -43,11 +42,11 @@ public class Utils {
                         JournalInfo journal = gson.fromJson(journalsData.getString(i), JournalInfo.class);
                         list.add(journal);
                     }
-                    Log.d("INFO", "");
-                    setList(list);
                 } catch (JSONException e) {
+                    list = null;
                     e.printStackTrace();
                 }
+                callback.onSuccess(list);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -56,10 +55,5 @@ public class Utils {
             }
         });
         request.add(stringRq);
-        return list;
-    }
-
-    public static void setList(List<JournalInfo> list) {
-        Utils.list = list;
     }
 }
