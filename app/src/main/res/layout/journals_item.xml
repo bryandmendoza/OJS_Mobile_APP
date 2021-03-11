@@ -27,7 +27,7 @@
             app:cardElevation="1dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/jiImageView"
                 android:layout_width="60dp"
                 android:layout_height="80dp"
                 android:layout_gravity="top"
