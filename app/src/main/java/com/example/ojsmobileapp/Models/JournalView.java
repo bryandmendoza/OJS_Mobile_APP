@@ -44,9 +44,9 @@ public class JournalView {
         jiBtnViewMore.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                Intent intent = new Intent(context, IssuesActivity.class);
+                Intent intent = new Intent(context, IssuesActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle b = new Bundle();
-                b.putString("", "");
+                b.putString("journal_id", info.getJournal_id());
                 intent.putExtras(b);
                 context.startActivity(intent);
             }

@@ -1,11 +1,14 @@
 package com.example.ojsmobileapp.Models;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ojsmobileapp.IssuesActivity;
 import com.example.ojsmobileapp.R;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -41,7 +44,11 @@ public class IssueView {
         iiBtnViewMore.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                //
+                Intent intent = new Intent(context, IssuesActivity.class);
+                Bundle b = new Bundle();
+                b.putString("issue_id", info.getIssue_id());
+                intent.putExtras(b);
+                context.startActivity(intent);
             }
         });
     }

@@ -5,6 +5,6 @@ import com.example.ojsmobileapp.Models.JournalInfo;
 
 import java.util.List;
 
-public interface VolleyCallback {
-    void onSuccess(List<JournalInfo> result);
+public interface VolleyCallbackIssue {
+    void onSuccess(List<IssueInfo> result);
 }

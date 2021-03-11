@@ -10,6 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ojsmobileapp.Models.IssueInfo;
 import com.example.ojsmobileapp.Models.JournalInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,6 +42,38 @@ public class Utils {
                     for(int i=0;i<journalsData.length();i++){
                         JournalInfo journal = gson.fromJson(journalsData.getString(i), JournalInfo.class);
                         list.add(journal);
+                    }
+                } catch (JSONException e) {
+                    list = null;
+                    e.printStackTrace();
+                }
+                callback.onSuccess(list);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Sucedió un error en la consulta. Intente nuevamente. \n Detalle del error: "+error.getMessage() , Toast.LENGTH_LONG).show();
+            }
+        });
+        request.add(stringRq);
+    }
+
+    public static void getIssuesData(Context context, final VolleyCallbackIssue callback, String journalID) {
+        request = Volley.newRequestQueue(context);
+        String URL = "https://revistas.uteq.edu.ec/ws/issues.php?j_id="+journalID;
+        stringRq = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONArray issuesData = null;
+                List<IssueInfo> list;
+                try {
+                    GsonBuilder builder = new GsonBuilder();
+                    Gson gson = builder.create();
+                    issuesData = new JSONArray(response);
+                    list = new ArrayList<>();
+                    for(int i=0;i<issuesData.length();i++){
+                        IssueInfo issue = gson.fromJson(issuesData.getString(i), IssueInfo.class);
+                        list.add(issue);
                     }
                 } catch (JSONException e) {
                     list = null;
