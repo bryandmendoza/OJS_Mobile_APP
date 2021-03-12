@@ -60,7 +60,9 @@ public class PubView {
         }
         for(int i=0;i<info.getGaleys().size();i++) {
             if (info.getGaleys().get(i).getLabel().equals("pdf")) {
-                urlString = info.getGaleys().get(i).getUrlViewGalley();
+                //urlString = info.getGaleys().get(i).getUrlViewGalley();
+                urlString = info.getGaleys().get(i).getUrlViewGalley()+"/"+info.getGaleys().get(i).getFile_id();
+                urlString = urlString.replace("view", "download");
                 break;
             }
         }
