@@ -16,9 +16,9 @@ public class PubGaleysInfo {
     @Expose
     private String file_id;
 
-    @SerializedName("UrlViewGallery")
+    @SerializedName("UrlViewGalley")
     @Expose
-    private String UrlViewGallery;
+    private String UrlViewGalley;
 
     public String getGalley_id() {
         return galley_id;
@@ -44,11 +44,11 @@ public class PubGaleysInfo {
         this.file_id = file_id;
     }
 
-    public String getUrlViewGallery() {
-        return UrlViewGallery;
+    public String getUrlViewGalley() {
+        return UrlViewGalley;
     }
 
-    public void setUrlViewGallery(String urlViewGallery) {
-        UrlViewGallery = urlViewGallery;
+    public void setUrlViewGalley(String urlViewGalley) {
+        UrlViewGalley = urlViewGalley;
     }
 }
