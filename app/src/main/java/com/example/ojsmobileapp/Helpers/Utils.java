@@ -12,6 +12,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ojsmobileapp.Models.IssueInfo;
 import com.example.ojsmobileapp.Models.JournalInfo;
+import com.example.ojsmobileapp.Models.PubAuthorsInfo;
 import com.example.ojsmobileapp.Models.PubInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -106,8 +107,9 @@ public class Utils {
                     pubsData = new JSONArray(response);
                     list = new ArrayList<>();
                     for(int i=0;i<pubsData.length();i++){
-                        if (pubsData.get(i) instanceof JSONArray) {
-
+                        if (pubsData.get(i) instanceof org.json.JSONObject) {
+                            PubInfo pub = gson.fromJson(String.valueOf(pubsData.getJSONObject(i)), PubInfo.class);
+                            list.add(pub);
                         } else {
                             PubInfo pub = gson.fromJson(pubsData.getString(i), PubInfo.class);
                             list.add(pub);

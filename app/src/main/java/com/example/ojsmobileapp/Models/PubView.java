@@ -37,10 +37,25 @@ public class PubView {
     @Resolve
     public void onResolved() {
         piTxtTitle.setText(info.getTitle());
-        piTxtAuthors.setText(info.getAuthors());
+        String authors = "";
+        String url = "";
+        for(int i=0;i<info.getAuthors().size();i++) {
+            if (i > 0) {
+                authors += ", ";
+            }
+            authors += info.getAuthors().get(i).getNombres();
+        }
+        for(int i=0;i<info.getGaleys().size();i++) {
+            if (info.getGaleys().get(i).getLabel().equals("PDF")) {
+                url = info.getGaleys().get(i).getUrlViewGallery();
+                break;
+            }
+        }
+        piTxtAuthors.setText(authors);
         piBtnDownloadPDF.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
+
                 Toast.makeText(context, "Has elegido descargar el pdf", Toast.LENGTH_LONG).show();
             }
         });

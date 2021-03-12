@@ -44,15 +44,15 @@ public class PubInfo {
 
     @SerializedName("galeys")
     @Expose
-    private List<PubAuthorInfo> galeys;
+    private List<PubGaleysInfo> galeys;
 
     @SerializedName("keywords")
     @Expose
-    private List<PubAuthorInfo> keywords;
+    private List<PubKeywordsInfo> keywords;
 
     @SerializedName("authors")
     @Expose
-    private List<PubAuthorInfo> authors;
+    private List<PubAuthorsInfo> authors;
 
     public String getSection() {
         return section;
@@ -126,11 +126,27 @@ public class PubInfo {
         this.seq = seq;
     }
 
-    public List<PubAuthorInfo> getGaleys() {
+    public List<PubGaleysInfo> getGaleys() {
         return galeys;
     }
 
-    public void setGaleys(List<PubAuthorInfo> galeys) {
+    public void setGaleys(List<PubGaleysInfo> galeys) {
         this.galeys = galeys;
+    }
+
+    public List<PubKeywordsInfo> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<PubKeywordsInfo> keywords) {
+        this.keywords = keywords;
+    }
+
+    public List<PubAuthorsInfo> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<PubAuthorsInfo> authors) {
+        this.authors = authors;
     }
 }

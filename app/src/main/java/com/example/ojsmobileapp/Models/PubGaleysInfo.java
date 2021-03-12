@@ -3,7 +3,7 @@ package com.example.ojsmobileapp.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PubAuthorInfo {
+public class PubGaleysInfo {
     @SerializedName("galley_id")
     @Expose
     private String galley_id;
