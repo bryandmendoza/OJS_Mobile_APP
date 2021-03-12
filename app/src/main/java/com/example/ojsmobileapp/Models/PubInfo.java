@@ -3,26 +3,16 @@ package com.example.ojsmobileapp.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class PubInfo {
-    @SerializedName("issue_id")
+    @SerializedName("section")
     @Expose
-    private String issue_id;
+    private String section;
 
-    @SerializedName("volume")
+    @SerializedName("publication_id")
     @Expose
-    private String volume;
-
-    @SerializedName("number")
-    @Expose
-    private String number;
-
-    @SerializedName("year")
-    @Expose
-    private String year;
-
-    @SerializedName("date_published")
-    @Expose
-    private String date_published;
+    private String publication_id;
 
     @SerializedName("title")
     @Expose
@@ -32,48 +22,52 @@ public class PubInfo {
     @Expose
     private String doi;
 
-    @SerializedName("cover")
+    @SerializedName("abstract")
     @Expose
-    private String cover;
+    private String _abstract;
 
-    public String getIssue_id() {
-        return issue_id;
+    @SerializedName("date_published")
+    @Expose
+    private String date_published;
+
+    @SerializedName("submission_id")
+    @Expose
+    private String submission_id;
+
+    @SerializedName("section_id")
+    @Expose
+    private String section_id;
+
+    @SerializedName("seq")
+    @Expose
+    private String seq;
+
+    @SerializedName("galeys")
+    @Expose
+    private List<PubAuthorInfo> galeys;
+
+    @SerializedName("keywords")
+    @Expose
+    private List<PubAuthorInfo> keywords;
+
+    @SerializedName("authors")
+    @Expose
+    private List<PubAuthorInfo> authors;
+
+    public String getSection() {
+        return section;
     }
 
-    public void setIssue_id(String issue_id) {
-        this.issue_id = issue_id;
+    public void setSection(String section) {
+        this.section = section;
     }
 
-    public String getVolume() {
-        return volume;
+    public String getPublication_id() {
+        return publication_id;
     }
 
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getDate_published() {
-        return date_published;
-    }
-
-    public void setDate_published(String date_published) {
-        this.date_published = date_published;
+    public void setPublication_id(String publication_id) {
+        this.publication_id = publication_id;
     }
 
     public String getTitle() {
@@ -92,11 +86,51 @@ public class PubInfo {
         this.doi = doi;
     }
 
-    public String getCover() {
-        return cover;
+    public String getDate_published() {
+        return date_published;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setDate_published(String date_published) {
+        this.date_published = date_published;
+    }
+
+    public String getSubmission_id() {
+        return submission_id;
+    }
+
+    public void setSubmission_id(String submission_id) {
+        this.submission_id = submission_id;
+    }
+
+    public String get_abstract() {
+        return _abstract;
+    }
+
+    public void set_abstract(String _abstract) {
+        this._abstract = _abstract;
+    }
+
+    public String getSection_id() {
+        return section_id;
+    }
+
+    public void setSection_id(String section_id) {
+        this.section_id = section_id;
+    }
+
+    public String getSeq() {
+        return seq;
+    }
+
+    public void setSeq(String seq) {
+        this.seq = seq;
+    }
+
+    public List<PubAuthorInfo> getGaleys() {
+        return galeys;
+    }
+
+    public void setGaleys(List<PubAuthorInfo> galeys) {
+        this.galeys = galeys;
     }
 }

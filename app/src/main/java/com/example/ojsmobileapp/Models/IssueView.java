@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ojsmobileapp.IssuesActivity;
+import com.example.ojsmobileapp.PubsActivity;
 import com.example.ojsmobileapp.R;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -44,7 +45,7 @@ public class IssueView {
         iiBtnViewMore.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                Intent intent = new Intent(context, IssuesActivity.class);
+                Intent intent = new Intent(context, PubsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle b = new Bundle();
                 b.putString("issue_id", info.getIssue_id());
                 intent.putExtras(b);

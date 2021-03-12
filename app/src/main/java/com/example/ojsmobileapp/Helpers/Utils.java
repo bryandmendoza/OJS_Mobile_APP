@@ -12,8 +12,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ojsmobileapp.Models.IssueInfo;
 import com.example.ojsmobileapp.Models.JournalInfo;
+import com.example.ojsmobileapp.Models.PubInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,6 +76,42 @@ public class Utils {
                     for(int i=0;i<issuesData.length();i++){
                         IssueInfo issue = gson.fromJson(issuesData.getString(i), IssueInfo.class);
                         list.add(issue);
+                    }
+                } catch (JSONException e) {
+                    list = null;
+                    e.printStackTrace();
+                }
+                callback.onSuccess(list);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Sucedió un error en la consulta. Intente nuevamente. \n Detalle del error: "+error.getMessage() , Toast.LENGTH_LONG).show();
+            }
+        });
+        request.add(stringRq);
+    }
+
+    public static void getPubsData(Context context, final VolleyCallbackPub callback, String issueID) {
+        request = Volley.newRequestQueue(context);
+        String URL = "https://revistas.uteq.edu.ec/ws/pubs.php?i_id="+issueID;
+        stringRq = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONArray pubsData = null;
+                List<PubInfo> list;
+                try {
+                    GsonBuilder builder = new GsonBuilder();
+                    Gson gson = builder.create();
+                    pubsData = new JSONArray(response);
+                    list = new ArrayList<>();
+                    for(int i=0;i<pubsData.length();i++){
+                        if (pubsData.get(i) instanceof JSONArray) {
+
+                        } else {
+                            PubInfo pub = gson.fromJson(pubsData.getString(i), PubInfo.class);
+                            list.add(pub);
+                        }
                     }
                 } catch (JSONException e) {
                     list = null;

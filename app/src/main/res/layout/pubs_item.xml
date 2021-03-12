@@ -26,14 +26,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/iiTxtTitle"
+                android:id="@+id/piTxtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/iiTxtAuthors"
+                android:id="@+id/piTxtAuthors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -41,7 +41,7 @@
                 android:textSize="12sp" />
 
             <Button
-                android:id="@+id/iiBtnDownloadPDF"
+                android:id="@+id/piBtnDownloadPDF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
