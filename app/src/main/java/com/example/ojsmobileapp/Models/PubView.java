@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.webkit.MimeTypeMap;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -68,36 +69,14 @@ public class PubView {
         piBtnDownloadPDF.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                try {
-                    URL url = new URL(finalUrlString);
-                    Toast.makeText(context, finalUrlString, Toast.LENGTH_LONG).show();
-
-                    DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(finalUrlString));
-                    request.allowScanningByMediaScanner();
-                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                    request.setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, "articulo.pdf");
-                    dm.enqueue(request);
-
-                    /*HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                    urlConnection.setRequestMethod("GET");
-                    urlConnection.setDoOutput(true);
-                    urlConnection.connect();
-
-                    InputStream inputStream = urlConnection.getInputStream();
-                    FileOutputStream fileOutputStream = new FileOutputStream("articulo.pdf");
-                    int totalSize = urlConnection.getContentLength();
-
-                    byte[] buffer = new byte[1024 * 1024];
-                    int bufferLength = 0;
-                    while((bufferLength = inputStream.read(buffer))>0 ){
-                        fileOutputStream.write(buffer, 0, bufferLength);
-                    }
-                    fileOutputStream.close();*/
-                } catch (IOException e) {
-                    Toast.makeText(context, "No se ha podido descargar el PDF", Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
+                DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(finalUrlString));
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, "prueba");
+                request.setMimeType(MimeTypeMap.getSingleton().getMimeTypeFromExtension(".pdf"));
+                dm.enqueue(request);
+                Toast.makeText(context, "Artículo descargado", Toast.LENGTH_LONG).show();
             }
         });
     }
